@@ -1,23 +1,38 @@
 [versions]
+activity = "1.8.0"
 agp = "8.3.1"
+annotation = "1.7.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
+lifecycleLivedataKtx = "2.7.0"
 material = "1.11.0"
 constraintlayout = "2.1.4"
 navigationFragment = "2.7.7"
 navigationUi = "2.7.7"
+roomCommon = "2.6.1"
+roomCommonVersion = "2.4.2"
+navigationRuntime = "2.7.7"
 
 [libraries]
+activity = { module = "androidx.activity:activity", version.ref = "activity" }
+annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleLivedataKtx" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+room-common-v242 = { module = "androidx.room:room-common", version.ref = "roomCommonVersion" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCommonVersion" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCommonVersion" }
+navigation-runtime = { group = "androidx.navigation", name = "navigation-runtime", version.ref = "navigationRuntime" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
