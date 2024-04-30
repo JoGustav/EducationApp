@@ -18,7 +18,7 @@ import com.example.educationapp.data.model.entities.*;
 @Database(entities = {Course.class, CourseProgress.class, Direction.class, EducationMaterial.class,
                     InterestTestAnswers.class, InterestTestQuestions.class, InterestTestResult.class,
                     Stage.class, Task.class, TaskOptions.class, User.class, UsersCourses.class, UserTaskResult.class},
-                    version = 1)
+                    version = 2)
 public abstract class EducationPlatformDB extends RoomDatabase {
     // Объявление DAO для каждой сущности.
     public abstract DirectionDao directionDao();

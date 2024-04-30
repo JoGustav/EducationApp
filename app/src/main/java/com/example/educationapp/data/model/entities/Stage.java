@@ -21,7 +21,8 @@ public class Stage extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int stageID;
-    @ColumnInfo(name = "CourseID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int courseID;
     @ColumnInfo(name = "Title")
     private String title;
@@ -30,8 +31,7 @@ public class Stage extends BaseObservable {
     @ColumnInfo(name = "Order")
     private int order;
 
-    public Stage(int stageID, int courseID, String title, String description, int order) {
-        this.stageID = stageID;
+    public Stage(int courseID, String title, String description, int order) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;

@@ -24,15 +24,16 @@ public class UserTaskResult extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int userTaskResultID;
-    @ColumnInfo(name = "UserID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int userID;
-    @ColumnInfo(name = "TaskID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int taskID;
     @ColumnInfo(name = "Result")
     private boolean result;
 
-    public UserTaskResult(int userTaskResultID, int userID, int taskID, boolean result) {
-        this.userTaskResultID = userTaskResultID;
+    public UserTaskResult(int userID, int taskID, boolean result) {
         this.userID = userID;
         this.taskID = taskID;
         this.result = result;

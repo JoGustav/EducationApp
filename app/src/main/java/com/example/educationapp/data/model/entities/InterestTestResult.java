@@ -10,20 +10,31 @@ import androidx.annotation.NonNull;
 
 import com.example.educationapp.BR;
 
-@Entity(tableName = "interest_test_result")
+@Entity(tableName = "interest_test_result",
+        foreignKeys = {
+                @ForeignKey(entity = User.class,
+                        parentColumns = "userID",
+                        childColumns = "userID",
+                        onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = Direction.class,
+                        parentColumns = "directionID",
+                        childColumns = "directionID",
+                        onDelete = ForeignKey.CASCADE),
+        })
 public class InterestTestResult extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int resultID;
-    @ColumnInfo(name = "DirectionID")
+    @ColumnInfo(index = true)
+    @NonNull
     private int directionID;
-    @ColumnInfo(name = "UserID")
+    @ColumnInfo(index = true)
+    @NonNull
     private int userID;
     @ColumnInfo(name = "AnswerResult")
     private String answerResult;
 
-    public InterestTestResult(int resultID, int directionID, int userID, String answerResult) {
-        this.resultID = resultID;
+    public InterestTestResult(int directionID, int userID, String answerResult) {
         this.directionID = directionID;
         this.userID = userID;
         this.answerResult = answerResult;

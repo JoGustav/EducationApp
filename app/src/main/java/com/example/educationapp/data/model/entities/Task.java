@@ -21,7 +21,8 @@ public class Task extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int taskID;
-    @ColumnInfo(name = "StageID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int stageID;
     @ColumnInfo(name = "Question")
     private String question;
@@ -30,8 +31,7 @@ public class Task extends BaseObservable {
     @ColumnInfo(name = "CorrectAnswer")
     private String correctAnswer;
 
-    public Task(int taskID, int stageID, String question, String type, String correctAnswer) {
-        this.taskID = taskID;
+    public Task(int stageID, String question, String type, String correctAnswer) {
         this.stageID = stageID;
         this.question = question;
         this.type = type;

@@ -20,8 +20,7 @@ public class InterestTestQuestions extends BaseObservable {
     @ColumnInfo(name = "Type")
     private String type;
 
-    public InterestTestQuestions(int questionID, String questionText, String type) {
-        this.questionID = questionID;
+    public InterestTestQuestions(String questionText, String type) {
         this.questionText = questionText;
         this.type = type;
     }

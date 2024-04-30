@@ -20,8 +20,7 @@ public class Direction extends BaseObservable {
     @ColumnInfo(name = "Description")
     private String description;
 
-    public Direction(int directionID, String title, String description) {
-        this.directionID = directionID;
+    public Direction(String title, String description) {
         this.title = title;
         this.description = description;
     }

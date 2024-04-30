@@ -25,9 +25,11 @@ public class CourseProgress extends BaseObservable{
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int courseProgressID;
-    @ColumnInfo(name = "CourseID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int courseID;
-    @ColumnInfo(name = "UserID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int userID;
     @ColumnInfo(name = "CompletedStagesCount")
     private int completedStagesCount;
@@ -36,9 +38,8 @@ public class CourseProgress extends BaseObservable{
     @ColumnInfo(name = "ProgressPercentage")
     private int progressPercentage;
 
-    public CourseProgress(int courseProgressID, int courseID, int userID, int completedStagesCount,
+    public CourseProgress(int courseID, int userID, int completedStagesCount,
                           int totalStagesCount, int progressPercentage) {
-        this.courseProgressID = courseProgressID;
         this.courseID = courseID;
         this.userID = userID;
         this.completedStagesCount = completedStagesCount;

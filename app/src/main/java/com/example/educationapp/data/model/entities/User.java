@@ -22,8 +22,7 @@ public class User extends BaseObservable {
     @ColumnInfo(name = "Gender")
     private String gender;
 
-    public User(int userID, String name, int age, String gender) {
-        this.userID = userID;
+    public User(String name, int age, String gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;

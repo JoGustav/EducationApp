@@ -20,15 +20,15 @@ public class EducationMaterial extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int educationMaterialID;
-    @ColumnInfo(name = "StageID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int stageID;
     @ColumnInfo(name = "Content")
     private String content;
     @ColumnInfo(name = "Type")
     private String type;
 
-    public EducationMaterial(int educationMaterialID, int stageID, String content, String type) {
-        this.educationMaterialID = educationMaterialID;
+    public EducationMaterial(int stageID, String content, String type) {
         this.stageID = stageID;
         this.content = content;
         this.type = type;

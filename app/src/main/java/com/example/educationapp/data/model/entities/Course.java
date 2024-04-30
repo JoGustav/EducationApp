@@ -24,11 +24,11 @@ public class Course extends BaseObservable {
     private String title;
     @ColumnInfo(name = "Description")
     private String description;
-    @ColumnInfo(name = "DirectionID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int directionID;
 
-    public Course(int courseID, String title, String description, int directionID) {
-        this.courseID = courseID;
+    public Course(String title, String description, int directionID) {
         this.title = title;
         this.description = description;
         this.directionID = directionID;

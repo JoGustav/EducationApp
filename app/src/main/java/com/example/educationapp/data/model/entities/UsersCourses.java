@@ -25,13 +25,14 @@ public class UsersCourses extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int usersCoursesID;
-    @ColumnInfo(name = "UserID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int userID;
-    @ColumnInfo(name = "CourseID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int courseID;
 
-    public UsersCourses(int usersCoursesID, int userID, int courseID, float progress) {
-        this.usersCoursesID = usersCoursesID;
+    public UsersCourses(int userID, int courseID) {
         this.userID = userID;
         this.courseID = courseID;
     }

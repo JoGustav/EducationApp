@@ -21,13 +21,13 @@ public class TaskOptions extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int optionID;
-    @ColumnInfo(name = "TaskID", index = true)
+    @ColumnInfo(index = true)
+    @NonNull
     private int taskID;
     @ColumnInfo(name = "OptionText")
     private String optionText;
 
-    public TaskOptions(int optionID, int taskID, String optionText) {
-        this.optionID = optionID;
+    public TaskOptions(int taskID, String optionText) {
         this.taskID = taskID;
         this.optionText = optionText;
     }
