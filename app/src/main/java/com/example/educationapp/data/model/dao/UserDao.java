@@ -23,4 +23,7 @@ public interface UserDao {
 
     @Delete
     void delete(User user);
+
+    @Query("SELECT * FROM user WHERE Name = :name AND Gender = :gender AND Age = :age")
+    LiveData<User> getUserByNameGenderAndAge(String name, String gender, int age);
 }
