@@ -16,6 +16,9 @@ public interface CourseDao {
     @Query("SELECT * FROM course")
     LiveData<List<Course>> getAllCourses();
 
+    @Query("SELECT * FROM course WHERE directionID = :directionID")
+    LiveData<List<Course>> getAllCoursesForDirection(int directionID);
+
     @Insert
     void insert(Course course);
 

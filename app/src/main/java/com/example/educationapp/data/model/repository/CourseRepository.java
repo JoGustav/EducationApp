@@ -14,14 +14,14 @@ import java.util.concurrent.Executors;
 
 public class CourseRepository {
     private CourseDao courseDao;
-    private LiveData<List<Course>> allCourses;
+    private LiveData<List<Course>> courses;
     private ExecutorService executorService;
 
     // Конструктор репозитория
     public CourseRepository(Application application) {
         EducationPlatformDB database = EducationPlatformDB.getDatabase(application);
         courseDao = database.courseDao();
-        allCourses = courseDao.getAllCourses();
+        courses = courseDao.getAllCourses();
         executorService = Executors.newFixedThreadPool(3); // Создаем пул из 3 потоков
     }
 
@@ -42,10 +42,12 @@ public class CourseRepository {
 
     // Получение всех проектов
     public LiveData<List<Course>> getAllCourses() {
-        return allCourses;
+        return courses;
     }
 
-
+    public LiveData<List<Course>> getAllCoursesForDirection(int directionID) {
+        return courseDao.getAllCoursesForDirection(directionID);
+    }
     // Закрытие ExecutorService
     public void close() {
         executorService.shutdown();

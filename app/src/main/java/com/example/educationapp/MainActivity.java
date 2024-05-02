@@ -5,11 +5,16 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.educationapp.data.model.EducationPlatformDB;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        EducationPlatformDB db = EducationPlatformDB.getDatabase(this);
+        EducationPlatformDB.InitializeData(db);
 
         // Проверяем, авторизован ли пользователь
         SessionManager sessionManager = new SessionManager(getApplicationContext());
