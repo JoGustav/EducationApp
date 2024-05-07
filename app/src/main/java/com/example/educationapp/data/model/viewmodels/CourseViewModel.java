@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData;
 import com.example.educationapp.DirectionsActivity;
 import com.example.educationapp.data.model.entities.Course;
 import com.example.educationapp.data.model.entities.Direction;
+import com.example.educationapp.data.model.entities.User;
+import com.example.educationapp.data.model.entities.UsersCourses;
 import com.example.educationapp.data.model.repository.CourseRepository;
 import com.example.educationapp.data.model.repository.DirectionRepository;
 
@@ -37,5 +39,9 @@ public class CourseViewModel extends AndroidViewModel {
     {
         allCoursesForDirection = courseRepository.getAllCoursesForDirection(directionID);
         return allCoursesForDirection;
+    }
+
+    public LiveData<List<Course>> getAllCoursesOfUser(int userId) {
+        return courseRepository.getCoursesOfUser(userId);
     }
 }

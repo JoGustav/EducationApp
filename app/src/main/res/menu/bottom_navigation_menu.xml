@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_all_directions"
+        android:icon="@drawable/ic_home"
+        android:title="Все направления" />
+    <item
+        android:id="@+id/navigation_my_courses"
+        android:icon="@drawable/ic_ebook"
+        android:title="Мои курсы" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_student"
+        android:title="Профиль" />
+</menu>

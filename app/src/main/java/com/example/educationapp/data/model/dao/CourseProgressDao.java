@@ -1,5 +1,6 @@
 package com.example.educationapp.data.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -18,5 +19,11 @@ public interface CourseProgressDao {
 
     @Delete
     void delete(CourseProgress courseProgress);
+    @Query("SELECT * FROM course_progress WHERE courseID = :courseID AND userID = :userID")
+    LiveData<List<CourseProgress>> getAllCourseProgressForUser(int courseID, int userID);
+    @Query("SELECT CompletedStagesCount FROM COURSE_PROGRESS WHERE courseID = :courseID AND userID = :userID")
+    LiveData<Integer> getCompletedStagesCountForCourse(int courseID, int userID);
+    @Query("SELECT TotalStagesCount FROM COURSE_PROGRESS WHERE courseID = :courseID AND userID = :userID")
+    LiveData<Integer> getTotalStagesCountForCourse(int courseID, int userID);
 }
 

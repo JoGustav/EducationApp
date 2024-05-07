@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,9 +27,14 @@ import com.example.educationapp.databinding.FragmentAgeGenderBinding;
 public class FragmentAgeGender extends Fragment {
 
     private FragmentAgeGenderBinding binding;
-    private EditText editTextAge;
     private Spinner spinnerGender;
     private Button buttonSubmit;
+    private EditText editTextName;
+    private SeekBar seekBarAge;
+    private RadioGroup radioGroupGender;
+    private RadioButton radioButtonBoy;
+    private RadioButton radioButtonGirl;
+    private TextView textViewAge;
 
     @Override
     public View onCreateView(
@@ -33,20 +44,14 @@ public class FragmentAgeGender extends Fragment {
         binding = FragmentAgeGenderBinding.inflate(inflater, container, false);
 
         // Используем binding для инициализации элементов
-        editTextAge = binding.editTextAge;
-        spinnerGender = binding.spinnerGender;
+        editTextName = binding.editTextName;
+        seekBarAge = binding.childsAge; // Инициализация SeekBar
+        radioGroupGender = binding.genderGroup; // Инициализация RadioGroup
+        radioButtonBoy = binding.genderBoy; // Инициализация RadioButton для мальчика
+        radioButtonGirl = binding.genderGirl;
         buttonSubmit = binding.buttonSubmit;
+        textViewAge = binding.textViewAge;
 
-        // Создаем ArrayAdapter с массивом строк
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.gender_array, android.R.layout.simple_spinner_item);
-        // Указываем layout для раскрывающегося списка
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Применяем адаптер к spinner
-        spinnerGender.setAdapter(adapter);
-
-        // Устанавливаем "мужской" как значение по умолчанию
-        spinnerGender.setSelection(adapter.getPosition("мужской"));
 
         return binding.getRoot();
     }
@@ -56,11 +61,56 @@ public class FragmentAgeGender extends Fragment {
 
         RegistrationViewModel regVM = new ViewModelProvider(requireActivity()).get(RegistrationViewModel.class);
 
+        radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Получаем корневой элемент вашего макета
+                View rootView = getActivity().getWindow().getDecorView();
+
+                if (checkedId == R.id.gender_boy) {
+                    // Устанавливаем фон для мальчика
+                    rootView.setBackgroundResource(R.drawable.boy);
+                } else if (checkedId == R.id.gender_girl) {
+                    // Устанавливаем фон для девочки
+                    rootView.setBackgroundResource(R.drawable.boy);
+                }
+                // Добавьте другие условия для других RadioButton
+            }
+        });
+        seekBarAge.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Обновление текста в TextViewAge при изменении значения SeekBar
+                textViewAge.setText("Возраст: " + progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Метод, который вызывается, когда пользователь начинает перетаскивание ползунка
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Метод, который вызывается, когда пользователь заканчивает перетаскивание ползунка
+            }
+        });
+
+
         binding.buttonSubmit.setOnClickListener(v -> {
-            int age = Integer.parseInt(editTextAge.getText().toString());
-            String gender = spinnerGender.getSelectedItem().toString();
+            String name = editTextName.getText().toString();
+            int age = seekBarAge.getProgress();
+            int selectedGenderId = radioGroupGender.getCheckedRadioButtonId(); // Получаем ID выбранного RadioButton
+            String gender;
+            if (selectedGenderId == R.id.gender_boy) {
+                gender = "Мальчик";
+            } else if (selectedGenderId == R.id.gender_girl) {
+                gender = "Девочка";
+            } else {
+                gender = "Не указано";
+            }
             regVM.setUserAge(age); // Сохраняем возраст в ViewModel
             regVM.setUserGender(gender); // Сохраняем гендер в ViewModel
+            regVM.setUserName(name);
             if (getActivity() instanceof RegistrationActivity) {
                 // Вызываем метод addUserToDatabase из RegistrationActivity
                 ((RegistrationActivity)getActivity()).addUserToDatabase();

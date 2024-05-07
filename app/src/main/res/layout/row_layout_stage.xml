@@ -20,7 +20,7 @@
             android:layout_marginHorizontal="5dp">
 
             <TextView
-                android:id="@+id/course_title"
+                android:id="@+id/stage_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Название курса"
@@ -31,14 +31,13 @@
 
 
             <TextView
-                android:id="@+id/course_desc"
+                android:id="@+id/stage_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Описание"
                 android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="@+id/course_title"
-                app:layout_constraintTop_toBottomOf="@+id/course_title" />
-
+                app:layout_constraintStart_toStartOf="@+id/stage_title"
+                app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

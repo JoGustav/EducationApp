@@ -18,9 +18,9 @@ public class InterestTestQuestions extends BaseObservable {
     @ColumnInfo(name = "QuestionText")
     private String questionText;
     @ColumnInfo(name = "Type")
-    private String type;
+    private int type;
 
-    public InterestTestQuestions(String questionText, String type) {
+    public InterestTestQuestions(String questionText, int type) {
         this.questionText = questionText;
         this.type = type;
     }
@@ -40,8 +40,8 @@ public class InterestTestQuestions extends BaseObservable {
     }
 
     @Bindable
-    public String getType() { return type; }
-    public void setType(String type) {
+    public int getType() { return type; }
+    public void setType(int type) {
         this.type = type;
         notifyPropertyChanged(BR.type);
     }

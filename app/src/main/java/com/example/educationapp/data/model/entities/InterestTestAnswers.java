@@ -32,9 +32,9 @@ public class InterestTestAnswers extends BaseObservable {
     @NonNull
     private int questionID;
     @ColumnInfo(name = "Answer")
-    private String answer;
+    private int answer;
 
-    public InterestTestAnswers(int userID, int questionID, String answer) {
+    public InterestTestAnswers(int userID, int questionID, int answer) {
         this.userID = userID;
         this.questionID = questionID;
         this.answer = answer;
@@ -62,8 +62,8 @@ public class InterestTestAnswers extends BaseObservable {
     }
 
     @Bindable
-    public String getAnswer() { return answer; }
-    public void setAnswer(String answer) {
+    public int getAnswer() { return answer; }
+    public void setAnswer(int answer) {
         this.answer = answer;
         notifyPropertyChanged(BR.answer);
     }

@@ -5,24 +5,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/row_element">
+    android:id="@+id/row_element"
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/purple_200"
+            android:layout_height="100dp"
+            android:background="@drawable/row_element"
             android:padding="12dp"
-            android:layout_marginVertical="4dp">
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="5dp">
 
             <TextView
                 android:id="@+id/direction_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Название сферы"
+                android:textColor="#FFFFFF"
+                android:textSize="30dp"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Описание"
+                android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="@+id/direction_title"
                 app:layout_constraintTop_toBottomOf="@+id/direction_title" />
 

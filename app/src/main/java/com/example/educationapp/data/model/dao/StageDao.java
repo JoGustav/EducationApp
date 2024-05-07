@@ -15,6 +15,10 @@ public interface StageDao {
     @Query("SELECT * FROM stage")
     LiveData<List<Stage>> getAllStages();
 
+    @Query("SELECT * FROM stage WHERE courseID = :courseID")
+    LiveData<List<Stage>> getAllStagesForCourse(int courseID);
+    @Query("SELECT COUNT(*) FROM stage WHERE courseID = :courseId")
+    LiveData<Integer> getCountStagesForCourse(int courseId);
     @Insert
     void insert(Stage stage);
 

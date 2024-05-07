@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EducationApp"
         tools:targetApi="31">
+        <activity android:name=".InterestTestActivity"
+            android:exported="false"/>
+        <activity android:name=".ResultInterestTestActivity"
+            android:exported="false"/>
         <activity
             android:name=".RegistrationActivity"
             android:exported="true"
@@ -31,6 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StagesActivity"
+            android:exported="false"/>
+        <activity android:name=".CoursesForUserActivity"
+            android:exported="false"/>
+        <activity android:name=".ProfileActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

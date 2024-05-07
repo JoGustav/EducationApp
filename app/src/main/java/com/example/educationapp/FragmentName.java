@@ -32,8 +32,6 @@ public class FragmentName extends Fragment {
         RegistrationViewModel regVM = new ViewModelProvider(requireActivity()).get(RegistrationViewModel.class);
 
         binding.buttonNext.setOnClickListener(v -> {
-            String name = binding.editTextName.getText().toString();
-            regVM.setUserName(name);
             NavHostFragment.findNavController(FragmentName.this)
                     .navigate(R.id.action_FirstFragment_to_SecondFragment);
         });

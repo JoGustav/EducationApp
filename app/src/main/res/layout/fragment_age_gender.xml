@@ -1,35 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentAgeGender"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background"
+    android:padding="40dp">
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/boy2"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#66adff"/>
+
+
+    <!-- Поле ввода "Child's name" -->
     <EditText
-        android:id="@+id/editTextAge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Введите возраст"
+        android:id="@+id/editTextName"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_input"
+        android:layout_below="@id/profile_image"
+        android:textSize="14sp"
+        android:padding="10dp"
+        android:hint="Ваше имя"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Spinner
-        android:id="@+id/spinnerGender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editTextAge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSubmit"
+    <TextView
+        android:id="@+id/textViewAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Подтвердить"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@+id/editTextName"
+        android:textSize="18dp"
+        android:textColor="#0099ff"
+        android:layout_marginLeft="10dp"
+        android:text="Возраст: 7"/>
+
+    <!-- Слайдер "Child's age" -->
+    <SeekBar
+        android:id="@+id/childs_age"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:max="18"
+        android:progress="6"
+        android:layout_below="@id/textViewAge"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"/>
+
+    <RadioGroup
+        android:id="@+id/gender_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/childs_age"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/gender_boy"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Мальчик"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/radio_button_background"
+            android:button="@null"
+            android:padding="10dp"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/gender_girl"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:textSize="18dp"
+            android:text="Девочка"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/radio_button_background"
+            android:button="@null"
+            android:padding="10dp"/>
+
+    </RadioGroup>
+
+
+    <!-- Кнопка "+ Add character" -->
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:text="Войти"
+        android:textSize="20dp"
+        android:layout_below="@id/gender_group"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background"
+        android:textColor="#FFFFFF"/>
+</RelativeLayout>

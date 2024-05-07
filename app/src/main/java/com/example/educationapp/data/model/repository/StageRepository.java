@@ -3,6 +3,7 @@ package com.example.educationapp.data.model.repository;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Query;
 
 import com.example.educationapp.data.model.EducationPlatformDB;
 import com.example.educationapp.data.model.dao.StageDao;
@@ -14,14 +15,14 @@ import java.util.concurrent.Executors;
 
 public class StageRepository {
     private StageDao stageDao;
-    private LiveData<List<Stage>> allStages;
+    private LiveData<List<Stage>> stages;
     private ExecutorService executorService;
 
     // Конструктор репозитория
     public StageRepository(Application application) {
         EducationPlatformDB database = EducationPlatformDB.getDatabase(application);
         stageDao = database.stageDao();
-        allStages = stageDao.getAllStages();
+        stages = stageDao.getAllStages();
         executorService = Executors.newFixedThreadPool(3); // Создаем пул из 3 потоков
     }
 
@@ -40,11 +41,13 @@ public class StageRepository {
         executorService.execute(() -> stageDao.delete(stage));
     }
 
-    // Получение всех проектов
-    public LiveData<List<Stage>> getAllStages() {
-        return allStages;
+    public LiveData<Integer> getCountStagesForCourse(int courseID) {
+        return stageDao.getCountStagesForCourse(courseID);
     }
 
+    public LiveData<List<Stage>> getAllStagesForCourse(int courseID) {
+        return stageDao.getAllStagesForCourse(courseID);
+    }
 
     // Закрытие ExecutorService
     public void close() {

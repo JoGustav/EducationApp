@@ -14,6 +14,7 @@ import com.example.educationapp.data.model.adapters.DirectionPowAdapter;
 import com.example.educationapp.data.model.entities.Direction;
 import com.example.educationapp.data.model.viewmodels.DirectionViewModel;
 import com.example.educationapp.databinding.ActivityDirectionsBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DirectionsActivity extends AppCompatActivity {
 
@@ -38,6 +39,21 @@ public class DirectionsActivity extends AppCompatActivity {
         directionViewModel = new ViewModelProvider(this).get(DirectionViewModel.class);
         directionViewModel.getAllDirections().observe(this, directions -> directionRowAdapter.setDirections(directions));
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.navigation_all_directions) {
+                // Переход к списку всех направлений
+            } else if (id == R.id.navigation_my_courses) {
+
+            } else if (id == R.id.navigation_profile) {
+                Intent intent = new Intent(DirectionsActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+            return true;
+        });
+
         directionRowAdapter.setOnItemClickListener(new DirectionPowAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Direction direction) {
@@ -46,5 +62,6 @@ public class DirectionsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
     });
+
 }
 }

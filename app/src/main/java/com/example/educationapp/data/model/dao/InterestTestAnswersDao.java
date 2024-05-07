@@ -1,5 +1,6 @@
 package com.example.educationapp.data.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,4 +22,7 @@ public interface InterestTestAnswersDao {
 
     @Delete
     void delete(InterestTestAnswers interestTestAnswers);
+
+    @Query("SELECT * FROM interest_test_answers WHERE userID = :userID")
+    LiveData<List<InterestTestAnswers>> getAnswersByUserId(int userID);
 }

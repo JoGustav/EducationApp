@@ -38,6 +38,16 @@ public class CourseProgressRepository {
         executorService.execute(() -> courseProgressDao.delete(courseProgress));
     }
 
+    public LiveData<List<CourseProgress>> getCourseProgressForUser(int courseID, int userID) {
+        return courseProgressDao.getAllCourseProgressForUser(courseID, userID);
+    }
+    public LiveData<Integer> getCompletedStagesCountForCourse(int courseID, int userID) {
+        return courseProgressDao.getCompletedStagesCountForCourse(courseID,userID);
+    }
+    public LiveData<Integer> getTotalStagesCountForCourse(int courseID, int userID) {
+        return courseProgressDao.getTotalStagesCountForCourse(courseID,userID);
+    }
+
     // Закрытие ExecutorService
     public void close() {
         executorService.shutdown();

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Выбранное состояние -->
+    <item android:state_checked="true">
+        <layer-list>
+            <!-- Тень -->
+            <item android:left="2dp" android:top="2dp">
+                <shape>
+                    <solid android:color="#4000" />
+                    <corners android:radius="18dp" />
+                </shape>
+            </item>
+            <!-- Форма кнопки -->
+            <item android:bottom="2dp" android:right="2dp">
+                <shape>
+                    <solid android:color="#0099ff"/> <!-- Цвет фона для выбранного состояния -->
+                    <corners android:radius="18dp"/>
+                    <stroke android:color="#0099ff" android:width="1dp"/>
+                </shape>
+            </item>
+        </layer-list>
+        <shape>
+            <solid android:color="#0099ff"/> <!-- Цвет фона для выбранного состояния -->
+            <corners android:radius="20dp"/>
+            <stroke android:color="#0099ff"/>
+        </shape>
+    </item>
+    <!-- Обычное состояние -->
+    <item>
+        <shape>
+            <solid android:color="#b3d7ff"/> <!-- Цвет фона для обычного состояния -->
+            <corners android:radius="18dp"/>
+            <stroke android:width="2dp" android:color="#66adff" />
+        </shape>
+    </item>
+</selector>

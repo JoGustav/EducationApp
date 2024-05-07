@@ -16,59 +16,59 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.educationapp.R;
 import com.example.educationapp.data.model.entities.Course;
 import com.example.educationapp.data.model.entities.Direction;
+import com.example.educationapp.data.model.entities.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoursePowAdapter extends RecyclerView.Adapter<CoursePowAdapter.MyViewHolder> {
-    private List<Course> courses = new ArrayList<>();
+public class StagePowAdapter extends RecyclerView.Adapter<StagePowAdapter.MyViewHolder> {
+    private List<Stage> stages = new ArrayList<>();
     private OnItemClickListener listener;
-
 
     @NonNull
     @Override
-    public CoursePowAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StagePowAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_layout_course, parent, false);
+                .inflate(R.layout.row_layout_stage, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CoursePowAdapter.MyViewHolder holder, int position) {
-        Course currentCourse = courses.get(position);
-        holder.course_title.setText(currentCourse.getTitle());
-        holder.course_desc.setText(currentCourse.getDescription());
+    public void onBindViewHolder(@NonNull StagePowAdapter.MyViewHolder holder, int position) {
+        Stage currentStage = stages.get(position);
+        holder.stage_title.setText(currentStage.getTitle());
+        holder.stage_desc.setText(currentStage.getDescription());
 
     }
     @Override
     public int getItemCount() {
-        return courses.size();
+        return stages.size();
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setCourses(List<Course> courses){
-        this.courses = courses;
+    public void setStages(List<Stage> stages){
+        this.stages = stages;
         notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView course_title, course_desc;
+        TextView stage_title, stage_desc;
         LinearLayout row_element;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            course_title = itemView.findViewById(R.id.course_title);
-            course_desc = itemView.findViewById(R.id.course_desc);
+            stage_title = itemView.findViewById(R.id.stage_title);
+            stage_desc = itemView.findViewById(R.id.stage_desc);
             row_element = itemView.findViewById(R.id.row_element);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 if(listener != null && position != RecyclerView.NO_POSITION){
-                    listener.onItemClick(courses.get(position));
+                    listener.onItemClick(stages.get(position));
                 }
             });
         }
     }
     public interface  OnItemClickListener{
-        void onItemClick(Course course);
+        void onItemClick(Stage stage);
     }
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
