@@ -106,5 +106,4 @@ public class CourseForUserPowAdapter extends RecyclerView.Adapter<CourseForUserP
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
-
 }

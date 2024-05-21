@@ -17,8 +17,8 @@ import com.example.educationapp.data.model.entities.*;
 
 @Database(entities = {Course.class, CourseProgress.class, Direction.class, EducationMaterial.class,
                     InterestTestAnswers.class, InterestTestQuestions.class, InterestTestResult.class,
-                    Stage.class, Task.class, TaskOptions.class, User.class, UsersCourses.class, UserTaskResult.class},
-                    version = 4)
+                    Stage.class, Task.class, TaskOptions.class, User.class, UsersCourses.class, UserTaskResult.class, Achievements.class, UserAchievements.class},
+                    version = 6)
 public abstract class EducationPlatformDB extends RoomDatabase {
     // Объявление DAO для каждой сущности.
     public abstract DirectionDao directionDao();
@@ -45,6 +45,8 @@ public abstract class EducationPlatformDB extends RoomDatabase {
     public abstract InterestTestResultDao interestTestResultDao();
 
     public abstract UsersCoursesDao usersCoursesDao();
+    public abstract UserAchievementsDao userAchievementsDao();
+    public abstract AchievementsDao achievementsDao();
 
     // Создание экземпляра базы данных.
     private static volatile EducationPlatformDB INSTANCE;
@@ -91,6 +93,8 @@ public abstract class EducationPlatformDB extends RoomDatabase {
             UserDao userDao = db.userDao();
             UsersCoursesDao usersCoursesDao = db.usersCoursesDao();
             UserTaskResultDao userTaskResultDao = db.userTaskResultDao();
+            AchievementsDao achievementsDao = db.achievementsDao();
+            UserAchievementsDao userAchievementsDao = db.userAchievementsDao();
 
 //            interestTestQuestionsDao.insert(new InterestTestQuestions("Склонен к логическим рассуждениям, способен оперировать абстрактными понятиями",1));
 //            interestTestQuestionsDao.insert(new InterestTestQuestions("Продуктивен, чем бы ни занимался (рисование, сочинение историй, конструирование и др.), способен предложить большое количество самых разных идей и решений",2));
@@ -207,19 +211,21 @@ public abstract class EducationPlatformDB extends RoomDatabase {
 //            courseDao.insert(new Course("Игры и эстафеты","Подборка командных игр для развития скорости реакции и взаимодействия",11));
 
 
-//            stageDao.insert(new Stage(17, "Знакомство с программированием", "Основы программирования и его роли в современном мире.", 1));
-//            stageDao.insert(new Stage(17, "Языки программирования", "Введение в языки программирования и выбор подходящего для начинающих.", 2));
-//            stageDao.insert(new Stage(17, "Среды разработки", "Обзор популярных сред разработки и их настройка.", 3));
-//            stageDao.insert(new Stage(17, "Основы Java", "Изучение базового синтаксиса и структуры Java.", 4));
-//            stageDao.insert(new Stage(17, "Логические операции и циклы", "Понимание условных операторов и циклов в Java.", 5));
-//            stageDao.insert(new Stage(17, "Работа с данными", "Управление данными с использованием массивов и списков.", 6));
-//            stageDao.insert(new Stage(17, "Объектно-ориентированное программирование", "Основы ООП и его применение в Java.", 7));
-//            stageDao.insert(new Stage(17, "Исключения и отладка", "Обработка ошибок и основы отладки кода.", 8));
-//            stageDao.insert(new Stage(17, "Разработка пользовательского интерфейса", "Создание простых пользовательских интерфейсов для мобильных приложений.", 9));
-//            stageDao.insert(new Stage(17, "Введение в Android", "Основы разработки под Android и структура проекта.", 10));
-//            stageDao.insert(new Stage(17, "Многопоточное программирование", "Основы работы с потоками и параллельными процессами.", 13));
-//            stageDao.insert(new Stage(17, "Работа с базами данных", "Изучение SQL и основы работы с реляционными базами данных.", 14));
-//            stageDao.insert(new Stage(17, "Архитектура приложений", "Принципы построения хорошей архитектуры мобильных приложений.", 15));
+//            stageDao.insert(new Stage(17, "Знакомство с программированием", "Основы программирования и его роли в современном мире.", 1, "@drawable/start"));
+//            stageDao.insert(new Stage(17, "Первая программа", "Создание первой программы и понимание её структуры.", 2, "@drawable/keyboard"));
+//            stageDao.insert(new Stage(17, "Основы языка", "Изучение основных конструкций и синтаксиса языка программирования.", 3, "@drawable/puzzle"));
+//            stageDao.insert(new Stage(17, "Управляющие конструкции", "Условные операторы и циклы в программировании.", 4, "@drawable/ifconstr"));
+//            stageDao.insert(new Stage(17, "Типы данных и переменные", "Работа с различными типами данных и переменными.", 5, "@drawable/comp"));
+//            stageDao.insert(new Stage(17, "Функции и методы", "Определение и использование функций и методов.", 6, "@drawable/batch"));
+//            stageDao.insert(new Stage(17, "Коллекции", "Использование массивов и коллекций для хранения данных.", 7, "@drawable/alghorithm"));
+//            stageDao.insert(new Stage(17, "Объектно-ориентированное программирование", "Основы ООП и создание классов и объектов.", 8, "@drawable/oop"));
+//            stageDao.insert(new Stage(17, "Интерфейсы и наследование", "Принципы наследования и реализация интерфейсов.", 9, "@drawable/version_control"));
+//            stageDao.insert(new Stage(17, "Проектная работа", "Разработка собственного проекта с использованием полученных знаний.", 10, "@drawable/arrow"));
+
+//            achievementsDao.insert(new Achievements("Первые шаги","Приступите к курсу Первые шаги в программировании","Начать курс", "@drawable/ic_achievement"));
+//            userAchievementsDao.insert(new UserAchievements(1,1));
+
+
 
         });
 

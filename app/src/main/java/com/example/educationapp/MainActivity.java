@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.educationapp.data.model.EducationPlatformDB;
+import com.example.educationapp.data.model.entities.InterestTestResult;
 
 public class MainActivity extends AppCompatActivity {
 

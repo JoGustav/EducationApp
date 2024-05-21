@@ -3,9 +3,11 @@ package com.example.educationapp;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +31,14 @@ public class DirectionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDirectionsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+
         final RecyclerView recyclerView = binding.recyclerView;
 
         recyclerView_directions = binding.recyclerView;
@@ -53,6 +63,8 @@ public class DirectionsActivity extends AppCompatActivity {
             }
             return true;
         });
+
+
 
         directionRowAdapter.setOnItemClickListener(new DirectionPowAdapter.OnItemClickListener() {
             @Override

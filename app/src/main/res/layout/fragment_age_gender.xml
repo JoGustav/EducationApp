@@ -13,7 +13,7 @@
         android:layout_height="170dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/boy2"
-        app:civ_border_width="2dp"
+        app:civ_border_width="4dp"
         app:civ_border_color="#66adff"/>
 
 
@@ -22,11 +22,11 @@
         android:id="@+id/editTextName"
         android:layout_width="400dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/custom_input"
         android:layout_below="@id/profile_image"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:padding="10dp"
         android:hint="Ваше имя"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,10 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextName"
-        android:textSize="18dp"
+        android:textSize="20sp"
         android:textColor="#0099ff"
         android:layout_marginLeft="10dp"
-        android:text="Возраст: 7"/>
+        android:text="Возраст: 12"/>
 
     <!-- Слайдер "Child's age" -->
     <SeekBar
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:max="18"
-        android:progress="6"
+        android:progress="12"
         android:layout_below="@id/textViewAge"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="0dp"
@@ -86,7 +86,7 @@
             android:text="Девочка"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="10dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#0099ff"
             android:background="@drawable/radio_button_background"
             android:button="@null"
             android:padding="10dp"/>
@@ -95,15 +95,14 @@
 
 
     <!-- Кнопка "+ Add character" -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSubmit"
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:text="Войти"
-        android:textSize="20dp"
         android:layout_below="@id/gender_group"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/button_background"
+        style="@style/CustomButtonStyle"
         android:textColor="#FFFFFF"/>
 </RelativeLayout>

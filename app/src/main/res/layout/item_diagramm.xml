@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_marginBottom="-12dp"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#4d4d4d"
+        android:textSize="16sp"
+        android:paddingBottom="3dp"
+        android:fontFamily="serif-monospace" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/scale_background"
+            android:padding="0dp">
+
+            <View
+                android:id="@+id/negativeBar"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="10"
+                android:background="#FF9999" />
+
+            <View
+                android:id="@+id/zeroBar"
+                android:layout_width="2dp"
+                android:layout_height="45dp"
+                android:background="#333333" />
+
+            <View
+                android:id="@+id/positiveBar"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="10"
+                android:background="#99FF99" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:fontFamily="serif-monospace" />
+    </LinearLayout>
+</LinearLayout>

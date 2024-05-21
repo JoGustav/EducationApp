@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Градиентный фон -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#FFFFFF"
+            android:endColor="#EAF8FA"
+            android:angle="270"/>
+        </shape>
+    </item>
+
+    <!-- Вертикальная пунктирная линия -->
+    <item>
+        <rotate
+            android:fromDegrees="90"
+            android:toDegrees="90"
+            android:pivotX="50%"
+            android:pivotY="50%">
+            <shape android:shape="line">
+                <stroke
+                    android:width="6dp"
+                    android:color="#676767"
+                    android:dashWidth="20dp"
+                    android:dashGap="8dp"/>
+                <size android:height="100dp"/>
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

@@ -28,16 +28,25 @@ public class Stage extends BaseObservable {
     private String title;
     @ColumnInfo(name = "Description")
     private String description;
+    @ColumnInfo(name = "IconLink")
+    private String linkIcon;
     @ColumnInfo(name = "Order")
     private int order;
 
-    public Stage(int courseID, String title, String description, int order) {
+    public Stage(int courseID, String title, String description, int order, String linkIcon) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
         this.order = order;
+        this.linkIcon = linkIcon;
     }
 
+    @Bindable
+    public String getLinkIcon() { return linkIcon; }
+    public void setLinkIcon(String linkIcon) {
+        this.linkIcon = linkIcon;
+        notifyPropertyChanged(BR.linkIcon);
+    }
     @Bindable
     public int getStageID() { return stageID; }
     public void setStageID(int stageID) {

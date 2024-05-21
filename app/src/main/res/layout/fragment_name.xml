@@ -16,12 +16,12 @@
 
 
     <!-- Кнопка внизу -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Нажми меня"
-        android:background="@drawable/button_background"
+        style="@style/CustomButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

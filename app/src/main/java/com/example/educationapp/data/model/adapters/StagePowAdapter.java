@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,8 +38,16 @@ public class StagePowAdapter extends RecyclerView.Adapter<StagePowAdapter.MyView
     public void onBindViewHolder(@NonNull StagePowAdapter.MyViewHolder holder, int position) {
         Stage currentStage = stages.get(position);
         holder.stage_title.setText(currentStage.getTitle());
-        holder.stage_desc.setText(currentStage.getDescription());
 
+        String imageName = currentStage.getLinkIcon();
+        int imageResId = holder.itemView.getContext().getResources().getIdentifier(imageName, "drawable", holder.itemView.getContext().getPackageName());
+
+        if (imageResId != 0) { // Проверяем, что ресурс существует
+            holder.stage_icon.setImageResource(imageResId);
+        } else {
+            // Обработка случая, когда ресурс не найден
+            holder.stage_icon.setImageResource(R.drawable.comp); // Здесь установите изображение по умолчанию
+        }
     }
     @Override
     public int getItemCount() {
@@ -52,13 +61,14 @@ public class StagePowAdapter extends RecyclerView.Adapter<StagePowAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView stage_title, stage_desc;
+        TextView stage_title;
+        ImageView stage_icon;
         LinearLayout row_element;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             stage_title = itemView.findViewById(R.id.stage_title);
-            stage_desc = itemView.findViewById(R.id.stage_desc);
             row_element = itemView.findViewById(R.id.row_element);
+            stage_icon = itemView.findViewById(R.id.stage_icon);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 if(listener != null && position != RecyclerView.NO_POSITION){

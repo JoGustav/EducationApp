@@ -3,13 +3,19 @@ package com.example.educationapp;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +48,7 @@ public class StagesActivity extends AppCompatActivity {
     private UsersCoursesViewModel usersCoursesViewModel;
     private Button buttonProceed;
     private int userID;
+    private FrameLayout overlay;
     private int countStage;
     private LiveData<Integer> countStagesLiveData;
 
@@ -50,6 +57,14 @@ public class StagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityStagesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        overlay = findViewById(R.id.overlay);
+
+        //заблокировать доступ к экарну
+        overlay.setVisibility(View.VISIBLE);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         final RecyclerView recyclerView = binding.recyclerView;
         recyclerView_stages = binding.recyclerView;
@@ -82,25 +97,11 @@ public class StagesActivity extends AppCompatActivity {
 
         buttonProceed.setOnClickListener(v -> {
 //            usersCoursesViewModel.insert(new UsersCourses(userID,courseID));
+            overlay.setVisibility(View.GONE);
 
-            courseProgressViewModel.insert(new CourseProgress(courseID,userID,0,countStagesLiveData.getValue(),0));
-            recyclerView_stages.setEnabled(true); // При нажатии делаем RecyclerView доступным
-            recyclerView_stages.setAlpha(1.0f); // Возвращаем нормальную прозрачность
-        });
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setItemIconTintList(null);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.navigation_all_directions) {
-                // Переход к списку всех направлений
-            } else if (id == R.id.navigation_my_courses) {
-                Intent intent = new Intent(StagesActivity.this, CoursesForUserActivity.class);
-                startActivity(intent);
-            } else if (id == R.id.navigation_profile) {
-                // Переход в профиль пользователя
-            }
-            return true;
+            courseProgressViewModel.insert(new CourseProgress(courseID,userID,0,countStagesLiveData.getValue()));
+//            recyclerView_stages.setEnabled(true); // При нажатии делаем RecyclerView доступным
+//            recyclerView_stages.setAlpha(1.0f); // Возвращаем нормальную прозрачность
         });
 
         stageViewModel.getAllStagesForCourse(courseID).observe(this, stages -> stageRowAdapter.setStages(stages));
@@ -113,5 +114,14 @@ public class StagesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // Вызовите метод onBackPressed или finish(), чтобы закрыть активность
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

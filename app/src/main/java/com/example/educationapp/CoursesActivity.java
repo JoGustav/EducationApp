@@ -3,10 +3,12 @@ package com.example.educationapp;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ import com.example.educationapp.data.model.entities.Course;
 import com.example.educationapp.data.model.entities.Direction;
 import com.example.educationapp.data.model.viewmodels.CourseViewModel;
 import com.example.educationapp.data.model.viewmodels.DirectionViewModel;
+import com.example.educationapp.databinding.ActivityCoursesBinding;
 import com.example.educationapp.databinding.ActivityDirectionsBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,7 +27,7 @@ public class CoursesActivity extends AppCompatActivity {
 
     public static final String COURSE_TO_PARSE =
             "com.example.educationapp.COURSE_TO_PARSE";
-    private ActivityDirectionsBinding binding;
+    private ActivityCoursesBinding binding;
     RecyclerView recyclerView_courses;
     CoursePowAdapter courseRowAdapter;
     private CourseViewModel courseViewModel;
@@ -32,9 +35,17 @@ public class CoursesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDirectionsBinding.inflate(getLayoutInflater());
+        binding = ActivityCoursesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         final RecyclerView recyclerView = binding.recyclerView;
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         recyclerView_courses = binding.recyclerView;
         recyclerView_courses.setLayoutManager(new LinearLayoutManager(CoursesActivity.this));
@@ -43,19 +54,6 @@ public class CoursesActivity extends AppCompatActivity {
         recyclerView_courses.setAdapter(courseRowAdapter);
         courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setItemIconTintList(null);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.navigation_all_directions) {
-                // Переход к списку всех направлений
-            } else if (id == R.id.navigation_my_courses) {
-
-            } else if (id == R.id.navigation_profile) {
-                // Переход в профиль пользователя
-            }
-            return true;
-        });
 
         int directionID = getIntent().getIntExtra(DirectionsActivity.DIRECTION_TO_PARSE, -1);
         courseViewModel.getAllCoursesForDirection(directionID).observe(this, courses -> courseRowAdapter.setCourses(courses));
@@ -68,5 +66,13 @@ public class CoursesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // Вызовите метод onBackPressed или finish(), чтобы закрыть активность
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

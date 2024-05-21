@@ -35,16 +35,13 @@ public class CourseProgress extends BaseObservable{
     private int completedStagesCount;
     @ColumnInfo(name = "TotalStagesCount")
     private int totalStagesCount;
-    @ColumnInfo(name = "ProgressPercentage")
-    private int progressPercentage;
 
     public CourseProgress(int courseID, int userID, int completedStagesCount,
-                          int totalStagesCount, int progressPercentage) {
+                          int totalStagesCount) {
         this.courseID = courseID;
         this.userID = userID;
         this.completedStagesCount = completedStagesCount;
         this.totalStagesCount = totalStagesCount;
-        this.progressPercentage = progressPercentage;
     }
 
     @Bindable
@@ -76,11 +73,5 @@ public class CourseProgress extends BaseObservable{
     public void setTotalStagesCount(int totalStagesCount) {
         this.totalStagesCount = totalStagesCount;
         notifyPropertyChanged(BR.totalStagesCount);
-    }
-    @Bindable
-    public int getProgressPercentage() { return progressPercentage; }
-    public void setProgressPercentage(int progressPercentage) {
-        this.progressPercentage = progressPercentage;
-        notifyPropertyChanged(BR.progressPercentage);
     }
 }

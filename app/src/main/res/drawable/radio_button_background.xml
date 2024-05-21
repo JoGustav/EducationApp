@@ -28,9 +28,9 @@
     <!-- Обычное состояние -->
     <item>
         <shape>
-            <solid android:color="#b3d7ff"/> <!-- Цвет фона для обычного состояния -->
+            <solid android:color="#e6f7ff"/> <!-- Цвет фона для обычного состояния -->
             <corners android:radius="18dp"/>
-            <stroke android:width="2dp" android:color="#66adff" />
+            <stroke android:width="4dp" android:color="#66adff" />
         </shape>
     </item>
 </selector>
