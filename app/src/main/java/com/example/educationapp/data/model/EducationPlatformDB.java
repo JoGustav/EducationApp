@@ -18,7 +18,7 @@ import com.example.educationapp.data.model.entities.*;
 @Database(entities = {Course.class, CourseProgress.class, Direction.class, EducationMaterial.class,
                     InterestTestAnswers.class, InterestTestQuestions.class, InterestTestResult.class,
                     Stage.class, Task.class, TaskOptions.class, User.class, UsersCourses.class, UserTaskResult.class, Achievements.class, UserAchievements.class},
-                    version = 6)
+                    version = 7)
 public abstract class EducationPlatformDB extends RoomDatabase {
     // Объявление DAO для каждой сущности.
     public abstract DirectionDao directionDao();
@@ -175,17 +175,17 @@ public abstract class EducationPlatformDB extends RoomDatabase {
 //            interestTestQuestionsDao.insert(new InterestTestQuestions("Физически сильнее и выносливее сверстников",11));
 
 
-//            directionDao.insert(new Direction("Интеллектуальная","Ваш ребенок обладает ярко выраженной интеллектуальной одаренностью. Он способен к глубокому анализу, логическому мышлению и быстрому усвоению новой информации. Это дар, который открывает перед ним мир научных открытий и интеллектуальных достижений"));
-//            directionDao.insert(new Direction("Творческая","Творческий потенциал вашего ребенка не знает границ. Его воображение и способность к нестандартному мышлению позволяют создавать уникальные идеи и проекты. Поддержка его творчества может привести к великим изобретениям и произведениям искусства."));
-//            directionDao.insert(new Direction("Академическая","Ваш ребенок демонстрирует выдающиеся академические способности. Его интерес к учебе и способность погружаться в сложные темы обещают большие успехи в школьной программе и за ее пределами"));
-//            directionDao.insert(new Direction("Художественно-изобразительная","Художественная одаренность вашего ребенка позволяет ему видеть мир в ярких красках и передавать свои впечатления через рисунок и живопись. Его работы могут рассказать о многом без слов"));
-//            directionDao.insert(new Direction("Музыкальная","Музыкальный талант вашего ребенка открывает ему двери в мир гармонии и ритма. Его способность воспринимать и создавать музыку может стать источником большой радости и вдохновения."));
-//            directionDao.insert(new Direction("Литературная","Литературная одаренность вашего ребенка проявляется в его любви к чтению и письму. Он способен создавать захватывающие истории и выразительные стихи, которые могут тронуть сердца."));
-//            directionDao.insert(new Direction("Артистическая","Ваш ребенок обладает артистическим даром, который позволяет ему выражать себя через танец, театр и выступления. Его способность передавать эмоции и истории через движение и игру заслуживает восхищения"));
-//            directionDao.insert(new Direction("Техническая","Техническая одаренность вашего ребенка проявляется в его интересе к устройствам и механизмам. Он способен понимать и создавать сложные конструкции, что может привести его к будущим изобретениям."));
-//            directionDao.insert(new Direction("Информационные технологии","Ваш ребенок показывает большой интерес к информационным технологиям. Его способность быстро осваивать новые программы и устройства говорит о большом потенциале в этой быстро развивающейся области."));
-//            directionDao.insert(new Direction("Cоциальный интеллект","Социальная одаренность вашего ребенка помогает ему легко находить общий язык с окружающими и быть лидером. Его умение понимать и управлять социальными взаимодействиями является ценным качеством."));
-//            directionDao.insert(new Direction("Психомоторная","Спортивные достижения вашего ребенка впечатляют. Его физическая сила, ловкость и выносливость позволяют ему преуспевать в различных видах спорта и добиваться высоких результатов."));
+//            directionDao.insert(new Direction("Интеллектуальная","","@drawable/brain"));
+//            directionDao.insert(new Direction("Творческая","","@drawable/tvorchestvo"));
+//            directionDao.insert(new Direction("Академическая","","@drawable/academic"));
+//            directionDao.insert(new Direction("Художественная","","@drawable/draw"));
+//            directionDao.insert(new Direction("Музыкальная","","@drawable/music"));
+//            directionDao.insert(new Direction("Литературная","","@drawable/writer"));
+//            directionDao.insert(new Direction("Артистическая","","@drawable/artist"));
+//            directionDao.insert(new Direction("Техническая","","@drawable/mekanik"));
+//            directionDao.insert(new Direction("Информационные технологии","","@drawable/it"));
+//            directionDao.insert(new Direction("Cоциальный интеллект","","@drawable/lider"));
+//            directionDao.insert(new Direction("Психомоторная","","@drawable/sport"));
 
 //            courseDao.insert(new Course("Логические лабиринты","Книга задач и головоломок для развития логического мышления",1));
 //            courseDao.insert(new Course("Юный ученый","Интерактивный учебник с экспериментами и опытами для самостоятельного выполнения",1));
@@ -222,9 +222,8 @@ public abstract class EducationPlatformDB extends RoomDatabase {
 //            stageDao.insert(new Stage(17, "Интерфейсы и наследование", "Принципы наследования и реализация интерфейсов.", 9, "@drawable/version_control"));
 //            stageDao.insert(new Stage(17, "Проектная работа", "Разработка собственного проекта с использованием полученных знаний.", 10, "@drawable/arrow"));
 
-//            achievementsDao.insert(new Achievements("Первые шаги","Приступите к курсу Первые шаги в программировании","Начать курс", "@drawable/ic_achievement"));
-//            userAchievementsDao.insert(new UserAchievements(1,1));
-
+//            achievementsDao.insert(new Achievements("Первая задача","Успешно завершите свою первую задачу", "Завершить задачу","@drawable/achievement"));
+//            userAchievementsDao.insert(new UserAchievements(1,2));
 
 
         });

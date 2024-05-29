@@ -19,12 +19,20 @@ public class Direction extends BaseObservable {
     private String title;
     @ColumnInfo(name = "Description")
     private String description;
+    @ColumnInfo(name = "IconLink")
+    private String linkIcon;
 
-    public Direction(String title, String description) {
+    public Direction(String title, String description, String linkIcon) {
         this.title = title;
         this.description = description;
+        this.linkIcon = linkIcon;
     }
 
+    public String getLinkIcon() { return linkIcon; }
+    public void setLinkIcon(String linkIcon) {
+        this.linkIcon = linkIcon;
+        notifyPropertyChanged(BR.linkIcon);
+    }
     @Bindable
     public int getDirectionID() { return directionID; }
     public void setDirectionID(int directionID) {

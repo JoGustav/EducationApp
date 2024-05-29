@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,7 +36,15 @@ public class DirectionPowAdapter extends RecyclerView.Adapter<DirectionPowAdapte
     public void onBindViewHolder(@NonNull DirectionPowAdapter.MyViewHolder holder, int position) {
         Direction currentDirection = directions.get(position);
         holder.direction_title.setText(currentDirection.getTitle());
-        holder.direction_desc.setText(currentDirection.getDescription());
+        String imageName = currentDirection.getLinkIcon();
+        int imageResId = holder.itemView.getContext().getResources().getIdentifier(imageName, "drawable", holder.itemView.getContext().getPackageName());
+
+        if (imageResId != 0) { // Проверяем, что ресурс существует
+            holder.direction_icon.setImageResource(imageResId);
+        } else {
+            // Обработка случая, когда ресурс не найден
+            holder.direction_icon.setImageResource(R.drawable.comp); // Здесь установите изображение по умолчанию
+        };
 
     }
 
@@ -51,12 +60,13 @@ public class DirectionPowAdapter extends RecyclerView.Adapter<DirectionPowAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView direction_title, direction_desc;
+        TextView direction_title;
+        ImageView direction_icon;
         LinearLayout row_element;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             direction_title = itemView.findViewById(R.id.direction_title);
-            direction_desc = itemView.findViewById(R.id.direction_desc);
+            direction_icon = itemView.findViewById(R.id.direction_icon);
             row_element = itemView.findViewById(R.id.row_element);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();

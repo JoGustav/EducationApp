@@ -55,22 +55,24 @@ public class CourseForUserPowAdapter extends RecyclerView.Adapter<CourseForUserP
     public void onBindViewHolder(@NonNull CourseForUserPowAdapter.MyViewHolder holder, int position) {
         Course currentCourse = courses.get(position);
         holder.course_title.setText(currentCourse.getTitle());
-        holder.course_desc.setText(currentCourse.getDescription());
+//        holder.course_desc.setText(currentCourse.getDescription());
 
         courseProgressRepository.getCompletedStagesCountForCourse(currentCourse.getCourseID(), userID).observe(lifecycleOwner, count -> {
             countCompletedStages = count;
             updateProgressText(holder.progress_percentage);
+            updateProgressBar(holder.circular_progress_bar, countCompletedStages, countTotalStages);
         });
 
         // Наблюдение за LiveData с общим количеством этапов
         courseProgressRepository.getTotalStagesCountForCourse(currentCourse.getCourseID(),userID).observe(lifecycleOwner, count -> {
             countTotalStages = count;
             updateProgressText(holder.progress_percentage);
+            updateProgressBar(holder.circular_progress_bar, countCompletedStages, countTotalStages);
         });
 
     }
     private void updateProgressText(TextView progressText) {
-        progressText.setText(String.valueOf(countCompletedStages) + " / " + String.valueOf(countTotalStages));
+        progressText.setText(String.valueOf(countCompletedStages) + "/" + String.valueOf(countTotalStages));
     }
     @Override
     public int getItemCount() {
@@ -85,12 +87,14 @@ public class CourseForUserPowAdapter extends RecyclerView.Adapter<CourseForUserP
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView course_title, course_desc, progress_percentage;
+        ProgressBar circular_progress_bar;
         LinearLayout row_element;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             progress_percentage = itemView.findViewById(R.id.progress_percentage);
             course_title = itemView.findViewById(R.id.course_title);
-            course_desc = itemView.findViewById(R.id.course_desc);
+            circular_progress_bar = itemView.findViewById(R.id.circular_progress_bar);
+//            course_desc = itemView.findViewById(R.id.course_desc);
             row_element = itemView.findViewById(R.id.row_element);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
@@ -102,6 +106,10 @@ public class CourseForUserPowAdapter extends RecyclerView.Adapter<CourseForUserP
     }
     public interface  OnItemClickListener{
         void onItemClick(Course course);
+    }
+    private void updateProgressBar(ProgressBar progressBar, int completedStages, int totalStages) {
+        progressBar.setMax(totalStages); // Устанавливаем максимальное значение
+        progressBar.setProgress(completedStages); // Устанавливаем текущий прогресс
     }
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;

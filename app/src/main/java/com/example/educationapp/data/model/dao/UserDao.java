@@ -14,16 +14,14 @@ import java.util.List;
 public interface UserDao {
     @Query("SELECT * FROM user")
     LiveData<List<User>> getAllUsers();
-
     @Insert
     void insert(User user);
-
     @Update
     void update(User user);
-
     @Delete
     void delete(User user);
-
     @Query("SELECT * FROM user WHERE Name = :name AND Gender = :gender AND Age = :age")
     LiveData<User> getUserByNameGenderAndAge(String name, String gender, int age);
+    @Query("SELECT * FROM user WHERE UserID = :userid")
+    LiveData<User> getUserByUserID(int userid);
 }

@@ -3,10 +3,18 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string-array name="gender_array">
         <item>Мужской</item>
         <item>Женский</item>
     </string-array>
+    <string name="time_selection_prompt">Сколько времени вы хотите потратить на обучение?</string>
+    <string name="time_selection_hint">Вы всегда можете изменить эту цель позже</string>
+    <string name="casual">Повседневный⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀5 минут</string>
+    <string name="regular">Обычный⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀10 минут</string>
+    <string name="serious">Серьезный⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀>20 минут</string>
+    <string name="next">Продолжить</string>
+    <string name="reminder_prompt">Начните привычку, установите ежедневное напоминание</string>
+    <string name="reminder_hint">Вы всегда можете изменить время позже</string>
+    <string name="yes_turn_on">Да, Включить</string>
 </resources>

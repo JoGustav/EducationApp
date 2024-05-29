@@ -96,12 +96,12 @@ public class StagesActivity extends AppCompatActivity {
         });
 
         buttonProceed.setOnClickListener(v -> {
-//            usersCoursesViewModel.insert(new UsersCourses(userID,courseID));
+            usersCoursesViewModel.insert(new UsersCourses(userID,courseID));
             overlay.setVisibility(View.GONE);
 
-            courseProgressViewModel.insert(new CourseProgress(courseID,userID,0,countStagesLiveData.getValue()));
-//            recyclerView_stages.setEnabled(true); // При нажатии делаем RecyclerView доступным
-//            recyclerView_stages.setAlpha(1.0f); // Возвращаем нормальную прозрачность
+            courseProgressViewModel.insert(new CourseProgress(courseID,userID,2,countStagesLiveData.getValue()));
+            recyclerView_stages.setEnabled(true); // При нажатии делаем RecyclerView доступным
+            recyclerView_stages.setAlpha(1.0f); // Возвращаем нормальную прозрачность
         });
 
         stageViewModel.getAllStagesForCourse(courseID).observe(this, stages -> stageRowAdapter.setStages(stages));

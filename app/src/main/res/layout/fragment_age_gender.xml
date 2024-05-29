@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_background"
     android:padding="40dp">
 
 
@@ -14,10 +13,18 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/boy2"
         app:civ_border_width="4dp"
-        app:civ_border_color="#66adff"/>
+        app:civ_border_color="#cccccc"/>
 
+    <ImageView
+        android:id="@+id/image_refresh"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/refresh"
+        android:layout_alignBottom="@id/profile_image"
+        android:layout_alignEnd="@id/profile_image"
+        android:layout_marginBottom="4dp"
+    android:layout_marginEnd="12dp" />
 
-    <!-- Поле ввода "Child's name" -->
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="400dp"
@@ -39,9 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextName"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:textColor="#0099ff"
         android:layout_marginLeft="10dp"
-        android:text="Возраст: 12"/>
+        android:text="Возраст: 16"/>
 
     <!-- Слайдер "Child's age" -->
     <SeekBar
@@ -49,7 +57,11 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:max="18"
-        android:progress="12"
+        android:min="8"
+        android:maxHeight="15dp"
+        android:progressDrawable="@drawable/custom_seekbar"
+        android:thumb="@drawable/custom_thumb"
+        android:progress="16"
         android:layout_below="@id/textViewAge"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="0dp"
@@ -66,13 +78,14 @@
 
         <RadioButton
             android:id="@+id/gender_boy"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:textSize="18dp"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="10dp"
+            android:gravity="center"
             android:text="Мальчик"
-            android:textColor="#FFFFFF"
+            android:textColor="#ffffff"
             android:background="@drawable/radio_button_background"
             android:button="@null"
             android:padding="10dp"
@@ -80,13 +93,14 @@
 
         <RadioButton
             android:id="@+id/gender_girl"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
+            android:gravity="center"
             android:textSize="18dp"
             android:text="Девочка"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="10dp"
-            android:textColor="#0099ff"
+            android:textColor="#595959"
             android:background="@drawable/radio_button_background"
             android:button="@null"
             android:padding="10dp"/>
@@ -97,7 +111,7 @@
     <!-- Кнопка "+ Add character" -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSubmit"
-        android:layout_width="220dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:text="Войти"
         android:layout_below="@id/gender_group"

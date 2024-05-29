@@ -115,8 +115,10 @@ public class FragmentAgeGender extends Fragment {
                 // Вызываем метод addUserToDatabase из RegistrationActivity
                 ((RegistrationActivity)getActivity()).addUserToDatabase();
             }
-            Intent intent = new Intent(getActivity(), DirectionsActivity.class);
-            startActivity(intent);
+            NavHostFragment.findNavController(FragmentAgeGender.this)
+                    .navigate(R.id.action_SecondFragment_to_TimeFragment);
+//            Intent intent = new Intent(getActivity(), DirectionsActivity.class);
+//            startActivity(intent);
         });
     }
 

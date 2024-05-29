@@ -18,9 +18,9 @@
     <!-- Кнопка внизу -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Нажми меня"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/next"
         style="@style/CustomButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

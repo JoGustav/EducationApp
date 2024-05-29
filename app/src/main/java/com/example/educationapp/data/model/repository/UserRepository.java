@@ -49,6 +49,9 @@
         public LiveData<User> getUserByNameGenderAge(String name, String gender, int age) {
             return userDao.getUserByNameGenderAndAge(name, gender, age);
         }
+        public LiveData<User> getUserByUserID(int userid) {
+            return userDao.getUserByUserID(userid);
+        }
         // Закрытие ExecutorService
         public void close() {
             executorService.shutdown();

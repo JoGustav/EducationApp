@@ -22,6 +22,7 @@ import com.example.educationapp.data.model.viewmodels.CourseViewModel;
 import com.example.educationapp.data.model.viewmodels.DirectionViewModel;
 import com.example.educationapp.data.model.viewmodels.StageViewModel;
 import com.example.educationapp.databinding.ActivityDirectionsBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CoursesForUserActivity extends AppCompatActivity {
 
@@ -59,6 +60,21 @@ public class CoursesForUserActivity extends AppCompatActivity {
 
         courseViewModel.getAllCoursesOfUser(userID).observe(this, courses -> courseForUserRowAdapter.setCourses(courses));
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.navigation_all_directions) {
+                Intent intent = new Intent(CoursesForUserActivity.this, DirectionsActivity.class);
+                startActivity(intent);
+            } else if (id == R.id.navigation_my_courses) {
+
+            } else if (id == R.id.navigation_profile) {
+                Intent intent = new Intent(CoursesForUserActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+            return true;
+        });
 
         courseForUserRowAdapter.setOnItemClickListener(new CourseForUserPowAdapter.OnItemClickListener() {
             @Override

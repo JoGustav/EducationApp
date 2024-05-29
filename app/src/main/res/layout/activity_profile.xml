@@ -1,45 +1,130 @@
-<!-- res/layout/activity_performance_stats.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:src="@drawable/boy2"
         app:civ_border_width="4dp"
-        app:civ_border_color="#66adff"/>
+        app:civ_border_color="#cccccc"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"/>
 
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/profile_image"
+        android:layout_alignTop="@id/profile_image"
+        android:padding="10dp"
+        android:background="@drawable/user_info"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="10dp">
 
-    <ProgressBar
-        android:id="@+id/circular_progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:indeterminate="false"
-        android:progressDrawable="@drawable/circular_progress_bar" />
+        <TextView
+            android:id="@+id/textViewUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Владислав"
+            android:textSize="25sp"
+            android:textColor="#595959"/>
+
+        <TextView
+            android:id="@+id/textViewAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Возраст: "
+            android:textSize="18sp"
+            android:textColor="#595959"/>
+
+        <TextView
+            android:id="@+id/textViewUserAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="16"
+            android:textSize="18sp"
+            android:textColor="#595959"/>
+
+        <TextView
+            android:id="@+id/textViewLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Уровень: "
+            android:textSize="18sp"
+            android:textColor="#595959"/>
+
+        <TextView
+            android:id="@+id/textViewUserLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="18sp"
+            android:textColor="#595959"/>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/progress_percentage"
+        android:id="@+id/textViewActive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="0%"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_below="@id/profile_image"
+        android:textSize="18dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        android:text="Активность" />
+
+    <HorizontalScrollView
+        android:id="@+id/hrz_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="195dp"
+        android:layout_below="@id/textViewActive"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:scrollbars="horizontal"
+        android:padding="10dp"
+        android:background="@drawable/user_info">
+
+        <com.example.educationapp.ContributionView
+            android:id="@+id/contributionView"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="#FFF" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textViewAchievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hrz_scroll"
+        android:textSize="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="20dp"
+        android:text="Достижения" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginHorizontal="16dp"
         android:id="@+id/recyclerview_achievements"
         android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:layout_below="@id/textViewAchievements"
+        android:background="@drawable/user_info"
+        android:orientation="horizontal" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
-
-    
-
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

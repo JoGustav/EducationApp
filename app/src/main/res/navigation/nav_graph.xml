@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.educationapp.FragmentName"
-        android:label="@string/first_fragment_label"
+        android:label="⠀"
         tools:layout="@layout/fragment_name">
 
         <action
@@ -16,13 +16,30 @@
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
+        android:label="⠀"
         android:id="@+id/SecondFragment"
         android:name="com.example.educationapp.FragmentAgeGender"
-        android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_age_gender">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_TimeFragment"
+            app:destination="@id/TimeFragment" />
+    </fragment>
+
+    <fragment
+        android:label="⠀"
+        android:id="@+id/TimeFragment"
+        android:name="com.example.educationapp.TimeSelectionFragment"
+        tools:layout="@layout/fragment_time_selection">
+        <action
+            android:id="@+id/action_TimeFragment_to_ReminderFragment"
+            app:destination="@+id/ReminderFragment"/>
+    </fragment>
+    <fragment
+        android:label="⠀"
+        android:id="@+id/ReminderFragment"
+        android:name="com.example.educationapp.ReminderFragment"
+        tools:layout="@layout/fragment_reminder">
+
     </fragment>
 </navigation>

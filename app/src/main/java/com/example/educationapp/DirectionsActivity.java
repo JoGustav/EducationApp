@@ -56,7 +56,8 @@ public class DirectionsActivity extends AppCompatActivity {
             if (id == R.id.navigation_all_directions) {
                 // Переход к списку всех направлений
             } else if (id == R.id.navigation_my_courses) {
-
+                Intent intent = new Intent(DirectionsActivity.this, CoursesForUserActivity.class);
+                startActivity(intent);
             } else if (id == R.id.navigation_profile) {
                 Intent intent = new Intent(DirectionsActivity.this, ProfileActivity.class);
                 startActivity(intent);
